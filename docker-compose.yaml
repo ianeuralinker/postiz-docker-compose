@@ -29,6 +29,10 @@ services:
       GOOGLE_GMB_CLIENT_ID: '${GOOGLE_GMB_CLIENT_ID:-}'
       GOOGLE_GMB_CLIENT_SECRET: '${GOOGLE_GMB_CLIENT_SECRET:-}'
 
+      # === YOUTUBE CANAL
+      YOUTUBE_CLIENT_ID: '${YOUTUBE_CLIENT_ID:-}'
+      YOUTUBE_CLIENT_SECRET: '${YOUTUBE_CLIENT_SECRET:-}'
+
     volumes:
       - postiz-config:/config/
       - postiz-uploads:/uploads/
