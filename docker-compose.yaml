@@ -148,12 +148,15 @@ services:
       - ES_SEEDS=temporal-elasticsearch
       - ES_VERSION=v7
       - TEMPORAL_NAMESPACE=default
+      - BIND_ON_IP=0.0.0.0
+      - TEMPORAL_BROADCAST_ADDRESS=10.250.77.10
     networks:
-      - temporal-network
+      temporal-network:
+        ipv4_address: 10.250.77.10
     expose:
       - 7233
     healthcheck:
-      test: ["CMD", "temporal", "operator", "cluster", "health", "--address", "temporal:7233"]
+      test: ["CMD", "temporal", "operator", "cluster", "health", "--address", "127.0.0.1:7233"]
       interval: 10s
       timeout: 5s
       retries: 15
@@ -205,3 +208,6 @@ networks:
   postiz-network:
   temporal-network:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 10.250.77.0/24
